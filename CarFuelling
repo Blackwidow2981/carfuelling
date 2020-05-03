@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.*;
+public class car
+{
+    public static int check(int dist,int min,int[] arr,int n)
+    {
+        int currentstop=0;
+        int counter=0;
+        int laststop=0;
+        
+        while(currentstop<=n)
+        {
+            laststop=currentstop;
+            
+            while(currentstop<=n&&arr[currentstop+1]-arr[laststop]<=min)
+            {currentstop =currentstop+1;
+                
+                
+           }
+           if(currentstop==laststop)
+           return -1;
+           if(currentstop<=n)
+           {
+               counter=counter+1;
+            }
+        }
+        return counter;
+    }
+
+    public static void main(String args[])throws IOException
+    {
+        Scanner sc = new Scanner(System.in);
+        BufferedReader in = new BufferedReader( 
+                new InputStreamReader( 
+                    System.in));
+        int dist=sc.nextInt();
+        int min =sc.nextInt();
+        int n=sc.nextInt();
+
+        String[] input = new String[n]; 
+        input = in.readLine().split(" "); int arr[]=new int[n+2];arr[0]=0;arr[n+1]=dist;
+        for(int i=1;i<n+1;i++)
+        {
+
+            arr[i]= Integer.parseInt(input[i-1]); 
+
+        }
+        int counter =check(dist,min,arr,n);
+        System.out.println(counter);
+
+    }
+}
